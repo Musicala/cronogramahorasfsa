@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es-CO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FSA · Horas 2026 · Musicala</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="h1">FSA · Horas efectivas 2026</div>
+        <div class="sub">Base semanal → cronograma anual → ajustes → totales</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" id="btnReload">Recargar</button>
+      <a class="btn ghost" id="btnOpenApi" target="_blank" rel="noopener">Abrir API</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="card">
+      <div class="tabs">
+        <button class="tab active" data-tab="base">Base semanal</button>
+        <button class="tab" data-tab="cronograma">Cronograma</button>
+        <button class="tab" data-tab="ajustes">Ajustes</button>
+        <button class="tab" data-tab="totales">Totales</button>
+      </div>
+
+      <div class="panel" id="tab-base"></div>
+      <div class="panel hidden" id="tab-cronograma"></div>
+      <div class="panel hidden" id="tab-ajustes"></div>
+      <div class="panel hidden" id="tab-totales"></div>
+    </section>
+
+    <footer class="foot">
+      <span id="status" class="status">Listo.</span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

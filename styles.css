@@ -1,0 +1,366 @@
+:root{
+  /* Brand Musicala */
+  --mozart:#0C41C4;
+  --beethoven:#680DBF;
+  --brahms:#CE0071;
+
+  /* Neutros / UI */
+  --bg:#f7f8ff;
+  --panel:#ffffff;
+  --ink:#101828;
+  --muted:#667085;
+
+  --line: rgba(16,24,40,.12);
+  --lineSoft: rgba(16,24,40,.09);
+
+  --r12:12px;
+  --r16:16px;
+  --r20:20px;
+  --r24:24px;
+
+  --tap:44px;
+
+  --shadow: 0 18px 55px rgba(16,24,40,.10);
+  --shadow2: 0 10px 30px rgba(16,24,40,.08);
+  --shadowSoft: 0 10px 24px rgba(16,24,40,.06);
+
+  --focus: 0 0 0 3px rgba(12,65,196,.18), 0 0 0 7px rgba(104,13,191,.10);
+
+  /* Gradients */
+  --gBrand: linear-gradient(135deg, var(--mozart), var(--beethoven), var(--brahms));
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  font-family: Roboto, system-ui, -apple-system, Segoe UI, Arial;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% 10%, rgba(12,65,196,.14), transparent 55%),
+    radial-gradient(900px 500px at 90% 30%, rgba(104,13,191,.14), transparent 55%),
+    radial-gradient(900px 500px at 50% 90%, rgba(206,0,113,.10), transparent 55%),
+    var(--bg);
+}
+
+/* =========================
+   Top bar
+========================= */
+.top{
+  position:sticky; top:0;
+  z-index:20;
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  padding: 14px 18px;
+  display:flex; align-items:center; justify-content:space-between;
+  gap:14px;
+}
+
+.brand{display:flex; align-items:center; gap:12px; min-width: 0;}
+.dot{
+  width:14px; height:14px; border-radius:999px;
+  background: var(--gBrand);
+  box-shadow: 0 10px 22px rgba(12,65,196,.18);
+  flex: 0 0 auto;
+}
+
+.titleWrap{min-width:0}
+.h1{
+  font-weight:900;
+  letter-spacing:-.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.sub{color:var(--muted); font-size:13px; margin-top:2px}
+
+.actions{display:flex; gap:10px; flex-wrap:wrap}
+
+/* =========================
+   Buttons
+========================= */
+.btn{
+  height: var(--tap);
+  padding: 0 14px;
+  border-radius: 12px;
+  border:1px solid var(--line);
+  background: #fff;
+  box-shadow: var(--shadow2);
+  color:var(--ink);
+  cursor:pointer;
+  font-weight:800;
+  text-decoration:none;
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:10px;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
+  user-select:none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(16,24,40,.10);
+  border-color: rgba(12,65,196,.22);
+}
+
+.btn:active{ transform: translateY(0px) scale(.99); }
+
+.btn:focus-visible{
+  outline:none;
+  box-shadow: var(--shadow2), var(--focus);
+  border-color: rgba(12,65,196,.35);
+}
+
+.btn.ghost{
+  background: transparent;
+  box-shadow:none;
+}
+
+.btn.ghost:hover{
+  background: rgba(12,65,196,.06);
+  border-color: rgba(12,65,196,.18);
+  box-shadow:none;
+}
+
+.btn.primary{
+  border-color: rgba(12,65,196,.22);
+  background: rgba(12,65,196,.10);
+}
+
+.btn.primary:hover{
+  background: rgba(12,65,196,.12);
+}
+
+/* Disabled */
+.btn[disabled]{
+  opacity:.55;
+  cursor:not-allowed;
+  transform:none !important;
+}
+
+/* =========================
+   Layout
+========================= */
+.wrap{max-width:1200px; margin: 18px auto; padding: 0 16px 28px}
+
+.card{
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(16,24,40,.10);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+
+/* =========================
+   Tabs
+========================= */
+.tabs{
+  display:flex; gap:6px;
+  padding: 12px;
+  border-bottom:1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.70));
+  overflow:auto;
+  scrollbar-width: thin;
+}
+
+.tab{
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor:pointer;
+  font-weight:900;
+  color: var(--muted);
+  transition: background .12s ease, border-color .12s ease, color .12s ease;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tab:hover{
+  background: rgba(104,13,191,.06);
+  color: var(--ink);
+}
+
+.tab:focus-visible{
+  outline:none;
+  box-shadow: var(--focus);
+}
+
+.tab.active{
+  color: var(--ink);
+  background: rgba(12,65,196,.08);
+  border-color: rgba(12,65,196,.18);
+}
+
+.panel{padding: 16px}
+.hidden{display:none}
+
+/* =========================
+   Grid / Boxes
+========================= */
+.grid{
+  display:grid;
+  grid-template-columns: 260px 1fr;
+  gap: 14px;
+}
+
+@media (max-width: 980px){
+  .grid{grid-template-columns: 1fr}
+  .top{padding: 12px 14px}
+}
+
+.box{
+  background: rgba(255,255,255,.9);
+  border: 1px solid var(--line);
+  border-radius: var(--r16);
+  padding: 14px;
+  box-shadow: var(--shadowSoft);
+}
+
+.kpi{
+  display:flex; align-items:baseline; justify-content:space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background: rgba(12,65,196,.06);
+}
+
+.kpi b{font-size:18px}
+.kpi span{color:var(--muted); font-weight:800}
+
+/* =========================
+   Inputs / selects
+========================= */
+.inp, select{
+  height: 42px;
+  width:100%;
+  border-radius: 12px;
+  border:1px solid var(--line);
+  padding: 0 12px;
+  font-weight:800;
+  outline:none;
+  background:#fff;
+  transition: box-shadow .12s ease, border-color .12s ease, transform .12s ease;
+}
+
+.inp::placeholder{ color: rgba(102,112,133,.75); font-weight:700; }
+
+.inp:focus, select:focus{
+  border-color: rgba(12,65,196,.35);
+  box-shadow: var(--focus);
+}
+
+select{
+  appearance:none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, rgba(16,24,40,.55) 50%),
+    linear-gradient(135deg, rgba(16,24,40,.55) 50%, transparent 50%),
+    linear-gradient(to right, transparent, transparent);
+  background-position:
+    calc(100% - 18px) 17px,
+    calc(100% - 13px) 17px,
+    0 0;
+  background-size: 5px 5px, 5px 5px, 100% 100%;
+  background-repeat:no-repeat;
+  padding-right: 36px;
+}
+
+.row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+@media (max-width: 720px){ .row{grid-template-columns: 1fr} }
+
+/* =========================
+   Table wrapper + table
+========================= */
+.table{
+  width:100%;
+  border-collapse: collapse;
+  overflow:hidden;
+  border-radius: 14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,.9);
+}
+
+.table th,.table td{
+  padding: 10px 10px;
+  border-bottom:1px solid var(--lineSoft);
+  text-align:center;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th{
+  background: rgba(104,13,191,.06);
+  font-weight:900;
+  text-align:center;
+  position: sticky;
+  top: 0; /* funciona cuando el contenedor hace scroll */
+  z-index: 2;
+}
+
+/* Primera columna más legible */
+.table td:first-child,.table th:first-child{
+  text-align:left;
+  font-weight:900;
+}
+
+/* Zebra suave + hover */
+.table tbody tr:nth-child(odd) td{ background: rgba(255,255,255,.55); }
+.table tbody tr:hover td{ background: rgba(12,65,196,.06); }
+
+.table tr:last-child td{border-bottom:none}
+
+/* Para que “2026-03-04 · miércoles” no se parta */
+.datecell{ white-space: nowrap; }
+
+/* Si se necesita scroll horizontal en móviles */
+.table{
+  display:block;
+  overflow:auto;
+  scrollbar-width: thin;
+}
+
+/* =========================
+   Footer / status / badges
+========================= */
+.foot{margin-top: 12px; display:flex; justify-content:flex-end}
+
+.status{
+  color: var(--muted);
+  font-weight:800;
+  background: rgba(255,255,255,.7);
+  border:1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+}
+
+.badge{
+  display:inline-flex; align-items:center;
+  gap:8px;
+  border-radius:999px;
+  padding: 6px 10px;
+  border:1px solid var(--line);
+  background:#fff;
+  font-weight:900;
+}
+
+.pill{
+  display:inline-block;
+  padding: 5px 10px;
+  border-radius:999px;
+  background: rgba(206,0,113,.08);
+  border: 1px solid rgba(206,0,113,.18);
+  font-weight:900;
+}
+
+.small{font-size:12px; color:var(--muted); font-weight:700}
+
+/* =========================
+   Motion safety
+========================= */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; scroll-behavior: auto !important; }
+  .btn:hover{ transform:none; }
+}
